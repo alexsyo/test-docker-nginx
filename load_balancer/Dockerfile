@@ -1,16 +1,13 @@
 # Base Image
 FROM ubuntu
 
-# Passed arguments
-ARG DIR
-
 # Install Nginx
 RUN apt-get update
 RUN apt-get -y install nginx
 
 # Configure Nginx
-RUN rm /var/www/html/index.*
-COPY ${DIR}/index.html /var/www/html/index.html
+RUN rm /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Install debugging utilities
 RUN apt-get -y install curl

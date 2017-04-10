@@ -5,12 +5,13 @@ services:
       context: web
       args:
         - DIR=web_1 
-    ports: 
-      - "8081:80"
   web_2:
     build:
       context: web
       args:
         - DIR=web_2
+  load_balancer:
+    build:
+      context: load_balancer
     ports:
-      - "8082:80"
+      - "8080:80"
